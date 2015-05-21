@@ -1,3 +1,3 @@
 #!/bin/bash
 
-PS1="Name: "
+PS1="Prompt "
