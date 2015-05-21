@@ -1,3 +1,3 @@
 #!/bin/bash
 
-EXPORT PS1="Name: "
+PS1="Name: "
