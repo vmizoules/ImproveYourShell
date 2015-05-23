@@ -8,8 +8,12 @@ PATHCOMP=$HOME"/"$BASHCOMP
 ERROR=0
 
 WATERMARK="#BashRcCompletionByVMizoules"
-BASHCOMPSCRIPT='echo -e && echo "Bash modded by vmizoules" && echo -e'
 WATERMARKEND="#end_of_BashRcCompletionByVMizoules"
+BASHCOMPSCRIPTURL='http://git.io/vT9MS'
+
+function downloadBashCompletion {
+	wget -q $BASHCOMPSCRIPTURL -O - > $PATHCOMP
+}
 
 # .bashrc exists
 if test -f $PATHRC ; then
@@ -17,12 +21,12 @@ if test -f $PATHRC ; then
 	if grep "$WATERMARK" $PATHRC >/dev/null ; then
 		echo "Script already executed"
 		echo "Updating $BASHCOMP"
+		# update .bash_completion
 		# if .bash_completion exists -> remove it
 		if test -f $PATHCOMP ; then
 			rm $PATHCOMP
 		fi
-		# update .bash_completion
-		echo $BASHCOMPSCRIPT > $PATHCOMP
+		downloadBashCompletion
 	else
 		echo "First execute"
 		# mod .bashrc
@@ -33,7 +37,7 @@ if test -f $PATHRC ; then
 		echo "fi" >> $PATHRC
 		echo $WATERMARKEND >> $PATHRC
 		# create .bash_completion
-		echo $BASHCOMPSCRIPT > $PATHCOMP
+		downloadBashCompletion
 	fi
 else
 	echo ".bashrc doesn't exist"
@@ -41,5 +45,3 @@ else
 fi
 
 exit $ERROR
-
-comm
