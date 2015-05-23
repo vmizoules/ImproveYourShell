@@ -1,0 +1,7 @@
+# Additional tricks for .bashrc
+
+echo -e
+echo "Bash modded by vmizoules"
+echo -e
+
+alias azerty="echo 'azertyrocks it!'"
