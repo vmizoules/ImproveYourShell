@@ -7,8 +7,9 @@ PATHRC=$HOME"/"$BASHRC
 PATHCOMP=$HOME"/"$BASHCOMP
 ERROR=0
 
-WATERMARK="#bashRcCompletionByVMizoules"
+WATERMARK="#BashRcCompletionByVMizoules"
 BASHCOMPSCRIPT='echo -e && echo "Bash modded by vmizoules" && echo -e'
+WATERMARKEND="#end_of_BashRcCompletionByVMizoules"
 
 # .bashrc exists
 if test -f $PATHRC ; then
@@ -30,6 +31,7 @@ if test -f $PATHRC ; then
 		echo "if test -f $PATHCOMP ; then" >> $PATHRC
 		echo "    . $PATHCOMP" >> $PATHRC
 		echo "fi" >> $PATHRC
+		echo $WATERMARKEND >> $PATHRC
 		# create .bash_completion
 		echo $BASHCOMPSCRIPT > $PATHCOMP
 	fi
@@ -39,3 +41,5 @@ else
 fi
 
 exit $ERROR
+
+comm
