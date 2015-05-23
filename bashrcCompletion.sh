@@ -15,11 +15,13 @@ function downloadBashCompletion {
 	wget -q $BASHCOMPSCRIPTURL -O - > $PATHCOMP
 }
 
+# show username
+echo "User: $USER"
+
 # .bashrc exists
 if test -f $PATHRC ; then
 	# if script already setted up
 	if grep "$WATERMARK" $PATHRC >/dev/null ; then
-		echo "Script already executed"
 		echo "Updating $BASHCOMP"
 		# update .bash_completion
 		# if .bash_completion exists -> remove it
@@ -28,7 +30,8 @@ if test -f $PATHRC ; then
 		fi
 		downloadBashCompletion
 	else
-		echo "First execute"
+		echo "First execution."
+		echo "Modding $BASHRC"
 		# mod .bashrc
 		echo -e >> $PATHRC
 		echo $WATERMARK >> $PATHRC
@@ -36,9 +39,11 @@ if test -f $PATHRC ; then
 		echo "    . $PATHCOMP" >> $PATHRC
 		echo "fi" >> $PATHRC
 		echo $WATERMARKEND >> $PATHRC
+		echo "Creating $BASHCOMP"
 		# create .bash_completion
 		downloadBashCompletion
 	fi
+	echo "Finish!"
 else
 	echo ".bashrc doesn't exist"
 	ERROR=1
