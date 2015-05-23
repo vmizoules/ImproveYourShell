@@ -2,8 +2,10 @@
 
 USER=`whoami`
 BASHRC=".bashrc"
+BASHRCBKP=".bashrc.backup"
 BASHCOMP=".bash_completion"
 PATHRC=$HOME"/"$BASHRC
+PATHRCBKP=$HOME"/"$BASHRCBKP
 PATHCOMP=$HOME"/"$BASHCOMP
 ERROR=0
 
@@ -22,7 +24,7 @@ echo "User: $USER"
 if test -f $PATHRC ; then
 	# if script already setted up
 	if grep "$WATERMARK" $PATHRC >/dev/null ; then
-		echo "Updating $BASHCOMP"
+		echo "Updating '$BASHCOMP'"
 		# update .bash_completion
 		# if .bash_completion exists -> remove it
 		if test -f $PATHCOMP ; then
@@ -31,7 +33,10 @@ if test -f $PATHRC ; then
 		downloadBashCompletion
 	else
 		echo "First execution."
-		echo "Modding $BASHRC"
+		echo "Save '$BASHRC'"
+		cp $PATHRC $PATHRCBKP
+		# mod .bashrc
+		echo "Modding '$BASHRC'"
 		# mod .bashrc
 		echo -e >> $PATHRC
 		echo $WATERMARK >> $PATHRC
@@ -39,7 +44,7 @@ if test -f $PATHRC ; then
 		echo "    . $PATHCOMP" >> $PATHRC
 		echo "fi" >> $PATHRC
 		echo $WATERMARKEND >> $PATHRC
-		echo "Creating $BASHCOMP"
+		echo "Creating '$BASHCOMP'"
 		# create .bash_completion
 		downloadBashCompletion
 	fi
