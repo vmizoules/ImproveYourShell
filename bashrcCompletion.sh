@@ -33,10 +33,10 @@ if test -f $PATHRC ; then
 		downloadBashCompletion
 	else
 		echo "First execution."
-		echo "Save '$BASHRC'"
+		echo "	Save '$BASHRC'"
 		cp $PATHRC $PATHRCBKP
 		# mod .bashrc
-		echo "Modding '$BASHRC'"
+		echo "	Modding '$BASHRC'"
 		# mod .bashrc
 		echo -e >> $PATHRC
 		echo $WATERMARK >> $PATHRC
@@ -44,7 +44,7 @@ if test -f $PATHRC ; then
 		echo "    . $PATHCOMP" >> $PATHRC
 		echo "fi" >> $PATHRC
 		echo $WATERMARKEND >> $PATHRC
-		echo "Creating '$BASHCOMP'"
+		echo "	Creating '$BASHCOMP'"
 		# create .bash_completion
 		downloadBashCompletion
 	fi
