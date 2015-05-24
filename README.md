@@ -4,7 +4,7 @@ ShortCommands
 Some 'one line' commands to launch scripts :
 ------------------
 
-BashCompletion install :
+BashCompletion install or update :
 
     bash <(curl -Ls http://git.io/vT9wm)
 
