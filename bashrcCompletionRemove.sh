@@ -21,29 +21,35 @@ echo "User: $USER"
 # .bashrc exists
 if test -f $PATHRC ; then
 	echo "Found: '$BASHRC'"
-	# .bash_completion exists
-	if test -f $PATHCOMP ; then
-		echo "Found: '$BASHCOMP'"
-		# .bashrc.backup
+	# detect installation script
+	if grep "$WATERMARK" $PATHRC >/dev/null ; then
+		# .bashrc.backup exists
 		if test -f $PATHRCBKP ; then
-			echo "Found: '$BASHRCBKP'"
+			echo "	Found: '$BASHRCBKP'"
 			# backup before restoring
 			cp $PATHRC $PATHRCBKP2
-			echo "	Restoring backup"
+			echo "		Restoring backup"
 			cp $PATHRCBKP $PATHRC
-			echo "	Remove '$BASHCOMP'"
 		else
-			echo "Missing: '$BASHRCBKP'"
-			echo "	Only remove '$BASHCOMP'"
+			echo "	Missing: '$BASHRCBKP'"
+			echo "		Do nothing."
 		fi
-		# remove .bash_completion
-		rm $PATHCOMP
 	else
-		# no .bash_completion
-		echo "Missing: '$BASHCOMP'"
-		echo "	Interrupt uninstall."
-		echo "	Do manual restoring."
+		echo "	No trace of installation in '$BASHRC'"
+		echo "	Do nothing."
 	fi
+fi
+
+# .bash_completion exists
+if test -f $PATHCOMP ; then
+	echo "Found: '$BASHCOMP'"
+	echo "	Remove '$BASHCOMP'"
+	# remove .bash_completion
+	rm $PATHCOMP
+else
+	# no .bash_completion
+	echo "Missing: '$BASHCOMP'"
+	echo "	Do nothing."
 fi
 
 
