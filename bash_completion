@@ -3,7 +3,6 @@
 # --- Greeting ---
 echo -e
 h=`date +%H`
-h=1
 if [ $h -lt 2 ]; then
     echo "Good night $USER"
 elif [ $h -lt 6 ]; then
