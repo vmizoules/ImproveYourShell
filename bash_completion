@@ -2,19 +2,22 @@
 # Add '#', if you want to disable a line
 
 # --- Greeting ---
-echo -e
-h=`date +%H`
-if [ $h -lt 2 ]; then
-    echo "Good night $USER"
-elif [ $h -lt 6 ]; then
-    echo "You should go to bed..."
-elif [ $h -lt 12 ]; then
-    echo "Good morning $USER"
-elif [ $h -lt 18 ]; then
-    echo "Good afternoon $USER"
-else
-    echo "Good evening $USER"
-fi
+function greeting {
+	echo -e
+	h=`date +%H`
+	if [ $h -lt 2 ]; then
+	    echo "Good night $USER"
+	elif [ $h -lt 6 ]; then
+	    echo "You should go to bed..."
+	elif [ $h -lt 12 ]; then
+	    echo "Good morning $USER"
+	elif [ $h -lt 18 ]; then
+	    echo "Good afternoon $USER"
+	else
+	    echo "Good evening $USER"
+	fi
+}
+#greeting
 
 # --- Aliases ---
 #ls
@@ -37,6 +40,7 @@ alias gut='got'
 alias azerty="echo 'azertyrocks it!'"
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 alias cgrep='grep --color=always'
+alias c='cd'
 
 
 # --- Variables ---
