@@ -52,4 +52,10 @@ else
 	echo "	Do nothing."
 fi
 
+if test $ERROR -eq 0 ; then
+	echo "Finish!"
+else
+	echo "[ERROR] An error occured during the process."
+fi
 
+exit $ERROR

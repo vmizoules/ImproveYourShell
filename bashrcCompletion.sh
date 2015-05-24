@@ -48,10 +48,15 @@ if test -f $PATHRC ; then
 		# create .bash_completion
 		downloadBashCompletion
 	fi
-	echo "Finish!"
 else
 	echo ".bashrc doesn't exist"
 	ERROR=1
+fi
+
+if test $ERROR -eq 0 ; then
+	echo "Finish!"
+else
+	echo "[ERROR] An error occured during the process."
 fi
 
 exit $ERROR
