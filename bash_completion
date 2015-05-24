@@ -1,4 +1,5 @@
-# Additional tricks for .bashrc
+# Customize your shell by Vincent Mizoules
+# Add '#', if you want to disable a line
 
 # --- Greeting ---
 echo -e
@@ -29,6 +30,7 @@ alias gb='git branch '
 alias gc='git commit'
 alias gd='git diff'
 alias go='git checkout '
+alias gp='git push '
 alias got='echo '\''-- -- Tape 'git' ! -- --'\'' && git'
 alias gut='got'
 #others
