@@ -2,12 +2,40 @@
 
 # --- Greeting ---
 echo -e
-echo "Bash modded by vmizoules"
-echo -e
-
+h=`date +%H`
+h=1
+if [ $h -lt 2 ]; then
+    echo "Good night $USER"
+elif [ $h -lt 6 ]; then
+    echo "You should go to bed..."
+elif [ $h -lt 12 ]; then
+    echo "Good morning $USER"
+elif [ $h -lt 18 ]; then
+    echo "Good afternoon $USER"
+else
+    echo "Good evening $USER"
+fi
 
 # --- Aliases ---
+#ls
+alias cls='ls --color=always'
+alias ll='ls -l --color=auto'
+alias sl='ls'
+alias s='ls'
+alias l='ls'
+#git
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias got='echo '\''-- -- Tape 'git' ! -- --'\'' && git'
+alias gut='got'
+#others
 alias azerty="echo 'azertyrocks it!'"
+alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+alias cgrep='grep --color=always'
 
 
 # --- Variables ---
