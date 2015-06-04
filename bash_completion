@@ -62,3 +62,9 @@ else
 [\t] ${debian_chroot:+($debian_chroot)}\u@\h :\w$(parse_git_branch)
 \$ '
 fi
+
+# --- Read file for your personnal modification ---
+$PERSOCOMP="bash_personnal_completion"
+if test -f $PERSOCOMP ; then
+    . $PERSOCOMP
+fi

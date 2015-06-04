@@ -12,6 +12,13 @@ BashCompletion remove :
 
 	bash <(curl -Ls http://git.io/vTdtT)
 
+Tips
+----
+
+You can add your own modifications by adding a new file :
+
+	bash_personnal_completion
+
 
 Credits
 -------
