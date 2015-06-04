@@ -15,9 +15,9 @@ BashCompletion remove :
 Tips
 ----
 
-You can add your own modifications by adding a new file :
+You can add your own modifications by adding a new file in your homedir :
 
-	bash_personnal_completion
+	.bash_personnal_completion
 
 
 Credits
