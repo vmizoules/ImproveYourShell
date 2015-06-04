@@ -21,8 +21,10 @@ function greeting {
 
 # --- Aliases ---
 #ls
+alias ls='ls --color=never'
+alias ll='ls -l'
 alias cls='ls --color=always'
-alias ll='ls -l --color=auto'
+alias cll='cls -l'
 alias sl='ls'
 alias s='ls'
 alias l='ls'
