@@ -17,7 +17,6 @@ function greeting {
 	    echo "Good evening $USER"
 	fi
 }
-#greeting
 
 # --- Aliases ---
 #ls
@@ -45,10 +44,8 @@ alias rm='rm -i'
 alias cgrep='grep --color=always'
 alias c='cd'
 
-
 # --- Variables ---
 color_prompt=yes
-
 
 # --- Prompt ---
 # Add git branch if its present to PS1
@@ -57,13 +54,16 @@ parse_git_branch() {
 }
 # Color prompt
 if [ "$color_prompt" = yes ]; then
-	PS1='
-[\t] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] : \[\033[01;34m\]\w\[\033[01;31m\] $(parse_git_branch)\[\033[00m\]
-\$ '
+	#Special color for root
+	if [ "$USER" = "root" ]; then
+		coloredPrompt='\[\033[1;31m\]\$ \[\033[00m\]'
+	else
+		coloredPrompt='\[\033[38;5;245m\]\$ \[\033[00m\]'
+	fi
+
+	PS1='\n[\t] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] : \[\033[01;34m\]\w\[\033[01;31m\] $(parse_git_branch)\[\033[00m\]\n'$coloredPrompt
 else
-	PS1='
-[\t] ${debian_chroot:+($debian_chroot)}\u@\h :\w$(parse_git_branch)
-\$ '
+	PS1='\n[\t] ${debian_chroot:+($debian_chroot)}\u@\h : \w $(parse_git_branch)\n\$ '
 fi
 
 # --- Read file for your personnal modification ---
