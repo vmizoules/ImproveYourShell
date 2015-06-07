@@ -38,11 +38,11 @@ alias gp='git push '
 alias got='echo '\''-- -- Tape 'git' ! -- --'\'' && git'
 alias gut='got'
 #others
-alias azerty="echo 'azertyrocks it!'"
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 alias rm='rm -i'
 alias cgrep='grep --color=always'
 alias c='cd'
+alias webshare='python -m SimpleHTTPServer'
 
 # --- Variables ---
 color_prompt=yes
