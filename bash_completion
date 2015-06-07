@@ -48,6 +48,10 @@ alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-ti
 alias rm='rm -i'
 alias cgrep='grep --color=always'
 alias webshare='python -m SimpleHTTPServer'
+alias bashupdate='bash <(curl -Ls http://git.io/vT9wm)'
+alias updatebash='promptupdate'
+alias bashremove='bash <(curl -Ls http://git.io/vTdtT)'
+alias removebash='bashremove'
 
 # --- Variables ---
 color_prompt=yes
