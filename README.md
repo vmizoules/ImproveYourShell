@@ -15,9 +15,15 @@ BashCompletion remove :
 Screenshots :
 -------------
 
+Normal prompt :
 ![Screenshot Prompt1](/screenshot/prompt1.jpg?raw=true "Normal prompt")
+
+Normal prompt with git
 ![Screenshot Prompt2](/screenshot/prompt2.jpg?raw=true "Normal prompt with git")
+
+Root prompt
 ![Screenshot Prompt3](/screenshot/prompt3.jpg?raw=true "Root prompt")
+
 
 Tips
 ----
