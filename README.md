@@ -43,9 +43,16 @@ You can add your own modifications by adding a new file in your homedir :
 
 Example for your personnal file :
 
-    greeting
-    alias hello='echo HelloWorld'
-    export mydir='/home/myName/myFavoriteDir/'
+```bash
+# display a greeting
+greeting
+# remove an alias already setted up
+unalias cgrep
+# set new personnal alias
+alias hello='echo HelloWorld'
+# create your own var
+export mydir='/home/myName/myFavoriteDir/'
+```
 
 Credits
 -------
