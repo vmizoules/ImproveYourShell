@@ -85,5 +85,5 @@ fi
 # --- Read file for your personnal modification ---
 PERSOCOMP="$HOME/.bash_personnal_completion"
 if test -f $PERSOCOMP ; then
-    . $PERSOCOMP
+    source $PERSOCOMP
 fi

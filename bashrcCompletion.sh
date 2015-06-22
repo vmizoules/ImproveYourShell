@@ -26,7 +26,7 @@ function installBashCompletion {
 	echo -e >> $PATHRC
 	echo $WATERMARK >> $PATHRC
 	echo "if test -f $PATHCOMP ; then" >> $PATHRC
-	echo "    . $PATHCOMP" >> $PATHRC
+	echo "    source $PATHCOMP" >> $PATHRC
 	echo "fi" >> $PATHRC
 	echo $WATERMARKEND >> $PATHRC
 	echo "	Creating '$BASHCOMP'"
