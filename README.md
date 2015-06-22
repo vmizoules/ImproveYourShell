@@ -37,11 +37,11 @@ Root prompt :
 Tips
 ----
 
-You can add your own modifications by adding a new file in your homedir :
+You can add your own bash modifications by creating a file called : (in your homedir)
 
 	.bash_personnal_completion
 
-Example for your personnal file :
+Example for your personnal file (shoud be in ~/.bash_personnal_completion) :
 
 ```bash
 # display a greeting
