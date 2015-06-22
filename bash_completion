@@ -44,6 +44,8 @@ alias cd..='cd ../../'
 alias cd...='cd ../../../'
 alias cd....='cd ../../../../'
 alias cd-='cd -'
+alias ..='cd ..'
+alias www='cd /var/www'
 #others
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 alias rm='rm -i'
