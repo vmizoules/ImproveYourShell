@@ -17,6 +17,42 @@ function downloadBashCompletion {
 	wget -q $BASHCOMPSCRIPTURL -O - > $PATHCOMP
 }
 
+function installBashCompletion {
+	echo "First execution."
+	echo "	Save '$BASHRC'"
+	cp $PATHRC $PATHRCBKP
+	# mod .bashrc
+	echo "	Modding '$BASHRC'"
+	echo -e >> $PATHRC
+	echo $WATERMARK >> $PATHRC
+	echo "if test -f $PATHCOMP ; then" >> $PATHRC
+	echo "    . $PATHCOMP" >> $PATHRC
+	echo "fi" >> $PATHRC
+	echo $WATERMARKEND >> $PATHRC
+	echo "	Creating '$BASHCOMP'"
+	# create .bash_completion
+	downloadBashCompletion
+}
+
+function updateBashCompletion {
+	# if .bash_completion exists -> move it to check if there is update later
+	if test -f $PATHCOMP ; then
+		mv $PATHCOMP ${PATHCOMP}.bak
+	fi
+	downloadBashCompletion
+	if test -f ${PATHCOMP}.bak ; then
+		# no modification
+		if test `diff ${PATHCOMP} ${PATHCOMP}.bak|wc -l` -eq "0" ; then
+			echo "Already up-to-date."
+		else
+			echo "Updating '$BASHCOMP'"
+		fi
+		rm ${PATHCOMP}.bak
+	else
+		echo "Downloading '$BASHCOMP'"
+	fi
+}
+
 # show username
 echo "User: $USER"
 
@@ -24,29 +60,9 @@ echo "User: $USER"
 if test -f $PATHRC ; then
 	# if script already setted up
 	if grep "$WATERMARK" $PATHRC >/dev/null ; then
-		echo "Updating '$BASHCOMP'"
-		# update .bash_completion
-		# if .bash_completion exists -> remove it
-		if test -f $PATHCOMP ; then
-			rm $PATHCOMP
-		fi
-		downloadBashCompletion
+		updateBashCompletion
 	else
-		echo "First execution."
-		echo "	Save '$BASHRC'"
-		cp $PATHRC $PATHRCBKP
-		# mod .bashrc
-		echo "	Modding '$BASHRC'"
-		# mod .bashrc
-		echo -e >> $PATHRC
-		echo $WATERMARK >> $PATHRC
-		echo "if test -f $PATHCOMP ; then" >> $PATHRC
-		echo "    . $PATHCOMP" >> $PATHRC
-		echo "fi" >> $PATHRC
-		echo $WATERMARKEND >> $PATHRC
-		echo "	Creating '$BASHCOMP'"
-		# create .bash_completion
-		downloadBashCompletion
+		installBashCompletion
 	fi
 else
 	echo ".bashrc doesn't exist"
@@ -54,7 +70,7 @@ else
 fi
 
 if test $ERROR -eq 0 ; then
-	echo "Finish!"
+	echo "Ok!"
 else
 	echo "[ERROR] An error occured during the process."
 fi
