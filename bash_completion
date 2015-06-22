@@ -1,7 +1,7 @@
 # Customize your shell by Vincent Mizoules
 # Add '#', if you want to disable a line
 
-# --- Greeting ---
+# ========== Greeting ==========
 function greeting {
 	echo -e
 	h=`date +%H`
@@ -18,7 +18,7 @@ function greeting {
 	fi
 }
 
-# --- Aliases ---
+# ========== Aliases ==========
 #ls
 alias ls='ls --color=never'
 alias ll='ls -l'
@@ -27,6 +27,7 @@ alias cll='cls -l'
 alias sl='ls'
 alias s='ls'
 alias l='ls'
+
 #git
 alias gs='git status '
 alias ga='git add '
@@ -37,6 +38,7 @@ alias go='git checkout '
 alias gp='git push '
 alias got='echo '\''-- -- Tape 'git' ! -- --'\'' && git'
 alias gut='got'
+
 #cd
 alias c='cd'
 alias cd.='cd ../'
@@ -46,11 +48,17 @@ alias cd....='cd ../../../../'
 alias cd-='cd -'
 alias ..='cd ..'
 alias www='cd /var/www'
-#others
-alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
-alias rm='rm -i'
-alias cgrep='grep --color=always'
-alias webshare='python -m SimpleHTTPServer'
+
+#admin sys
+alias ports='netstat -tulanp'
+alias ping='ping -c 5'
+alias fastping='ping -c 100 -s.2'
+alias psmem='ps auxf | sort -nr -k 4' #get top process eating memory
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+alias pscpu='ps auxf | sort -nr -k 3' #get top process eating cpu
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+
+#bashCompletion
 alias bashupdate='bash <(curl -Ls http://git.io/vT9wm)'
 alias updatebash='bashupdate'
 alias promptupdate='bashupdate'
@@ -60,10 +68,21 @@ alias removebash='bashremove'
 alias removeprompt='bashremove'
 alias promptremove='bashremove'
 
-# --- Variables ---
+#security
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+alias rm='rm -i --preserve-root'
+
+#others
+alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+alias cgrep='grep --color=auto'
+alias webshare='python -m SimpleHTTPServer'
+
+# ========== Variables ==========
 color_prompt=yes
 
-# --- Prompt ---
+# ========== Prompt ==========
 # Add git branch if its present to PS1
 parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
@@ -82,7 +101,7 @@ else
 	PS1='\n[\t] ${debian_chroot:+($debian_chroot)}\u@\h : \w $(parse_git_branch)\n\$ '
 fi
 
-# --- Read file for your personnal modification ---
+# ========== Read file for your personnal modification ==========
 PERSOCOMP="$HOME/.bash_personnal_completion"
 if test -f $PERSOCOMP ; then
     source $PERSOCOMP
