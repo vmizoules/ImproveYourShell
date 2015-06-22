@@ -43,6 +43,7 @@ alias cd.='cd ../'
 alias cd..='cd ../../'
 alias cd...='cd ../../../'
 alias cd....='cd ../../../../'
+alias cd-='cd -'
 #others
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 alias rm='rm -i'
