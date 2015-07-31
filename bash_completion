@@ -18,7 +18,6 @@ function greeting {
 	fi
 }
 
-# =
 function gitAliasSetUp {
 	git config --global alias.co checkout
 	git config --global alias.ci commit
@@ -62,7 +61,10 @@ alias cd.='cd ../'
 alias cd..='cd ../../'
 alias cd...='cd ../../../'
 alias cd....='cd ../../../../'
+alias cd.....='cd ../../../../../'
+alias cd......='cd ../../../../../../'
 alias cd-='cd -'
+alias home="cd $HOME"
 alias ..='cd ..'
 alias www='cd /var/www'
 
