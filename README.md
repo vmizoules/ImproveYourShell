@@ -1,40 +1,66 @@
-ShortCommands
+Improve your Shell
 =============
 
-Some 'one line' commands to launch scripts :
-------------------
+You use Linux shell every day? You make some mistyping? You like colors? Or you're just lazy?
 
-BashCompletion install or update :
+This trick will change your life!
+
+You just have to type in a single command line in your shell. Then your shell will be "patched".
+
+_(no root required, just patch user's ".bashrc")_
+
+
+Commands
+--------
+
+Install or update :
 
     bash <(curl -Ls http://git.io/vT9wm)
 
-BashCompletion remove :
+Remove :
 
 	bash <(curl -Ls http://git.io/vTdtT)
 
-Screenshots :
--------------
+Features
+------
 
-Normal prompt :
+- New prompt (see screenshots below)
+- Secure commands like rm/chmod to avoid some regrettable things
+- Retrieves typos (like "sl" for "ls" or "gut" for "git")
+- Many usefull alias
+  - git : gs, ga, gc...
+  - path : www, home, cd., cd.., cd..., cd-, ..
+  - sysadmin : ports, fastping, psmem10, pscpu10, webshare
+- Somes cool functions
+  - gitAliasSetUp : to configure some shortcut in git (git st, git co, ...)
+  - greeting : to welcome you
+- Easy to add you own customization (cf: Additional tips)
+
+_To know all features, you can take a look at the "bash_completion" file._
+
+Prompt screenshots
+--------
+
+Normal user :
 
 
 ![Screenshot Prompt1](/screenshot/prompt1.jpg?raw=true "Normal prompt")
 
 
-Normal prompt with git :
+Normal user with git :
 
 
 ![Screenshot Prompt2](/screenshot/prompt2.jpg?raw=true "Normal prompt with git")
 
 
-Root prompt :
+Root user :
 
 
 ![Screenshot Prompt3](/screenshot/prompt3.jpg?raw=true "Root prompt")
 
 
 
-Tips
+Additionnals tips
 ----
 
 You can add your own bash modifications by creating a file called : _(in your homedir)_
