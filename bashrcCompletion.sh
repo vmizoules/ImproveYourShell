@@ -14,7 +14,7 @@ WATERMARKEND="#end_of_BashRcCompletionByVMizoules"
 BASHCOMPSCRIPTURL='http://git.io/vT9MS'
 
 function downloadBashCompletion {
-	wget -q $BASHCOMPSCRIPTURL -O - > $PATHCOMP
+	curl -sL $BASHCOMPSCRIPTURL > $PATHCOMP
 }
 
 function installBashCompletion {
