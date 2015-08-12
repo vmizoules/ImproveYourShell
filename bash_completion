@@ -67,6 +67,8 @@ alias cd-='cd -'
 alias home="cd $HOME"
 alias ..='cd ..'
 alias www='cd /var/www'
+alias log='cd /var/log'
+alias logs='log'
 
 #admin sys
 alias ports='netstat -tulanp'
