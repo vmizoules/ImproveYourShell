@@ -19,6 +19,7 @@ function greeting {
 }
 
 function gitAliasSetUp {
+	git config --global color.ui auto
 	git config --global alias.co checkout
 	git config --global alias.ci commit
 	git config --global alias.df diff
