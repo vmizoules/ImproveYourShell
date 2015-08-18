@@ -1,22 +1,10 @@
 # Customize your shell by Vincent Mizoules
 # Add '#', if you want to disable a line
 
-# ========== Greeting ==========
-function greeting {
-	echo -e
-	h=`date +%H`
-	if [ $h -lt 2 ]; then
-	    echo "Good night $USER"
-	elif [ $h -lt 6 ]; then
-	    echo "You should go to bed..."
-	elif [ $h -lt 12 ]; then
-	    echo "Good morning $USER"
-	elif [ $h -lt 18 ]; then
-	    echo "Good afternoon $USER"
-	else
-	    echo "Good evening $USER"
-	fi
-}
+# ========== Variables ==========
+color_prompt=yes
+
+# ========== Functions ==========
 
 function gitAliasSetUp {
 	git config --global color.ui auto
@@ -33,6 +21,22 @@ function gitAliasSetUp {
 	git config --global alias.dump 'cat-file -p'
 	git config --global alias.undo 'reset --soft HEAD^'
 	echo "Done"
+}
+
+function greeting {
+	echo -e
+	h=`date +%H`
+	if [ $h -lt 2 ]; then
+	    echo "Good night $USER"
+	elif [ $h -lt 6 ]; then
+	    echo "You should go to bed..."
+	elif [ $h -lt 12 ]; then
+	    echo "Good morning $USER"
+	elif [ $h -lt 18 ]; then
+	    echo "Good afternoon $USER"
+	else
+	    echo "Good evening $USER"
+	fi
 }
 
 # ========== Aliases ==========
@@ -101,8 +105,14 @@ alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-ti
 alias cgrep='grep --color=auto'
 alias webshare='python -m SimpleHTTPServer'
 
-# ========== Variables ==========
-color_prompt=yes
+# ========== Shell options ==========
+if test `echo $BASH_VERSION | grep "^[4-9].*"` ; then
+        # bash version > 4.0, enable some options
+        shopt -s autocd
+        shopt -s cdspell
+        shopt -s direxpand
+        shopt -s dirspell
+fi
 
 # ========== Prompt ==========
 # Add git branch if its present to PS1
