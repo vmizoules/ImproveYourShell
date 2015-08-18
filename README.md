@@ -25,6 +25,8 @@ Features
 ------
 
 - New prompt (see screenshots below)
+- Auto cd (just type a dir name into bash)
+- Spell check for directories
 - Secure commands like rm/chmod to avoid some regrettable things
 - Retrieves typos (like "sl" for "ls" or "gut" for "git")
 - Many usefull alias
