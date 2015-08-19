@@ -106,12 +106,18 @@ alias cgrep='grep --color=auto'
 alias webshare='python -m SimpleHTTPServer'
 
 # ========== Shell options ==========
+if test `echo $BASH_VERSION | grep "^[3-9].*"` ; then
+	# bash version > 3.0, enable some options
+	shopt -s cdspell
+fi
 if test `echo $BASH_VERSION | grep "^[4-9].*"` ; then
         # bash version > 4.0, enable some options
         shopt -s autocd
-        shopt -s cdspell
-        shopt -s direxpand
         shopt -s dirspell
+fi
+if test `echo $BASH_VERSION | grep "^[4-9]\.[2-9].*"` ; then
+	# bash version > 4.2, enable some options
+	shopt -s direxpand
 fi
 
 # ========== Prompt ==========
