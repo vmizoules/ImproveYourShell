@@ -19,7 +19,12 @@ Install or update :
 
 Remove :
 
-	bash <(curl -Ls http://git.io/vTdtT)
+    bash <(curl -Ls http://git.io/vTdtT)
+
+Try just for current session : (No file will be installed on your computer)
+
+    source <(curl -Ls http://git.io/vT9MS)
+
 
 Features
 ------
@@ -67,7 +72,7 @@ Additionnals tips
 
 You can add your own bash modifications by creating a file called : _(in your homedir)_
 
-	.bash_personnal_completion
+    .bash_personnal_completion
 
 Example for your personnal file : _(shoud be in ~/.bash_personnal_completion)_
 
