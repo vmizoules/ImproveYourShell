@@ -77,7 +77,7 @@ alias logs='log'
 
 #admin sys
 alias ports='netstat -tulanp'
-alias ping='ping -c 5'
+alias ping5='ping -c 5'
 alias fastping='ping -c 100 -s.2'
 alias psmem='ps auxf | sort -nr -k 4' #get top process eating memory
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
