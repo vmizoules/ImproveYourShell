@@ -110,7 +110,7 @@ alias cgrep='grep --color=auto'
 alias webshare='python -m SimpleHTTPServer'
 
 #functions (too complex to be alias)
-bak() {
+function bak {
 	echo "Save '$1' in '$1.bak'"
 	cp -R "$1" "$1.bak" ;
 }
