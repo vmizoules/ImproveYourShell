@@ -109,6 +109,12 @@ alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-ti
 alias cgrep='grep --color=auto'
 alias webshare='python -m SimpleHTTPServer'
 
+#functions (too complex to be alias)
+bak() {
+	echo "Save '$1' in '$1.bak'"
+	cp -R "$1" "$1.bak" ;
+}
+
 # ========== Shell options ==========
 if test `echo $BASH_VERSION | grep "^[3-9].*"` ; then
 	# bash version > 3.0, enable some options
