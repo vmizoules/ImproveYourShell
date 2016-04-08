@@ -111,7 +111,7 @@ alias webshare='python -m SimpleHTTPServer'
 
 #functions (too complex to be alias)
 function bak {
-	echo "Save '$1' in '$1.bak'"
+	echo "Saved '$1' in '$1.bak'"
 	cp -R "$1" "$1.bak" ;
 }
 
