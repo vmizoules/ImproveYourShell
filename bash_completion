@@ -75,7 +75,7 @@ alias www='cd /var/www'
 alias log='cd /var/log'
 alias logs='log'
 
-#admin sys
+#sys admin
 alias ports='netstat -tulanp'
 alias ping5='ping -c 5'
 alias fastping='ping -c 100 -s.2'
@@ -107,6 +107,7 @@ alias rm='rm -i --preserve-root'
 #others
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 alias cgrep='grep --color=auto'
+alias nano='nano -cS'
 alias webshare='python -m SimpleHTTPServer'
 
 #functions (too complex to be alias)
