@@ -23,6 +23,11 @@ function gitAliasSetUp {
 	echo "Done"
 }
 
+function exists_command
+{
+  command -v "$1" >/dev/null 2>&1
+}
+
 function greeting {
 	echo -e
 	h=`date +%H`
@@ -154,4 +159,12 @@ fi
 PERSOCOMP="$HOME/.bash_personnal_completion"
 if test -f $PERSOCOMP ; then
     source $PERSOCOMP
+fi
+
+# ========== Launch TMUX =========
+if exists_command tmux; then
+	# Tmux exists
+	if [[ ! $TERM =~ screen ]]; then
+		exec tmux
+	fi
 fi
