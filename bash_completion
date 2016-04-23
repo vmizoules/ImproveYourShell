@@ -163,7 +163,8 @@ fi
 
 # ========== Launch TMUX =========
 if exists_command tmux; then
-  echo 'Tmux exists!'
-else
-  echo 'Your system does not have Tmux'
+	# Tmux exists
+	if [[ ! $TERM =~ screen ]]; then
+		exec tmux
+	fi
 fi
