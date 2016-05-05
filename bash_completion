@@ -44,6 +44,31 @@ function greeting {
 	fi
 }
 
+function loop {
+	export SLEEP=0.2
+	if test $# -eq 1
+	then
+		export SLEEP=$1
+		echo "Tape command to loop, then press [ENTER]:"
+		read CMD
+	else
+		if test $# -gt 1
+		then
+			echo "Usage: loop [time] (we'll try to make something good for you)"
+		fi
+		echo "Tape command to loop, then press [ENTER]:"
+		read CMD
+		echo -n "Loopback time (in seconds): "
+		read SLEEP
+		echo ""
+	fi
+	while test 1 -eq 1
+	do
+		$CMD
+		sleep $SLEEP
+	done
+}
+
 # ========== Aliases ==========
 #ls
 alias ls='ls --color=never'
