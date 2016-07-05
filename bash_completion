@@ -173,7 +173,7 @@ fi
 # ========== Launch TMUX =========
 if exists_command tmux; then
 	# Tmux exists and we are in a shell
-	if [[ $TERM == "screen" ]]; then
+	if [[ $TERM == "screen" || $TERM == "cygwin" ]]; then
 		# Not already in a tmux session ? create a new
 		[[ -z "$TMUX" ]] && exec tmux
 	fi
