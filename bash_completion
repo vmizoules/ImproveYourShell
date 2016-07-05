@@ -28,22 +28,6 @@ function exists_command
   command -v "$1" >/dev/null 2>&1
 }
 
-function greeting {
-	echo -e
-	h=`date +%H`
-	if [ $h -lt 2 ]; then
-	    echo "Good night $USER"
-	elif [ $h -lt 6 ]; then
-	    echo "You should go to bed..."
-	elif [ $h -lt 12 ]; then
-	    echo "Good morning $USER"
-	elif [ $h -lt 18 ]; then
-	    echo "Good afternoon $USER"
-	else
-	    echo "Good evening $USER"
-	fi
-}
-
 function loop {
 	export SLEEP=0.2
 	if test $# -eq 1
@@ -188,8 +172,9 @@ fi
 
 # ========== Launch TMUX =========
 if exists_command tmux; then
-	# Tmux exists
-	if [[ ! $TERM =~ screen ]]; then
-		exec tmux
+	# Tmux exists and we are in a shell
+	if [[ $TERM == "screen" ]]; then
+		# Not already in a tmux session ? create a new
+		[[ -z "$TMUX" ]] && exec tmux
 	fi
 fi
