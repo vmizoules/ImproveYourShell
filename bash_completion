@@ -179,5 +179,16 @@ if exists_command tmux; then
 	if [[ $TERM == "screen" || $TERM == "cygwin" || $TERM == "xterm" ]]; then
 		# Not already in a tmux session ? create a new
 		[[ -z "$TMUX" ]] && exec tmux
+
+		# Enable mouse mode if possible
+		tmux set-option mouse-utf8 on
+		tmux set-option mouse-resize-pane on
+		tmux set-option mouse-select-pane on
+		tmux set-option mouse-select-window on
+		tmux set-window-option mode-mouse on
+		# Use CTRL+A instead of CTRL+B
+		tmux set-option prefix C-a
+
+		tmux display-message "Configuration loaded! Welcome $USER"
 	fi
 fi
