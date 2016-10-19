@@ -189,6 +189,6 @@ if exists_command tmux; then
 		# Use CTRL+A instead of CTRL+B
 		tmux set-option prefix C-a
 
-		tmux display-message "Configuration loaded! Welcome $USER"
+		# tmux display-message "Configuration loaded! Welcome $USER"
 	fi
 fi
