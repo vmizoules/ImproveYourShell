@@ -1,10 +1,10 @@
 # Customize your shell by Vincent Mizoules
 # Add '#', if you want to disable a line
 
-# ========== Variables ==========
+# ========== Variables ========== #
 color_prompt=yes
 
-# ========== Functions ==========
+# ========== Functions ========== #
 
 function gitAliasSetUp {
 	git config --global color.ui auto
@@ -53,7 +53,7 @@ function loop {
 	done
 }
 
-# ========== Aliases ==========
+# ========== Aliases ========== #
 #ls
 alias ls='ls --color=never'
 alias ll='ls -l'
@@ -133,7 +133,7 @@ function bak {
 	cp -R "$1" "$1.bak" ;
 }
 
-# ========== Shell options ==========
+# ========== Shell options ========== #
 if test `echo $BASH_VERSION | grep "^[3-9].*"` ; then
 	# bash version > 3.0, enable some options
 	shopt -s cdspell
@@ -148,12 +148,12 @@ if test `echo $BASH_VERSION | grep "^[4-9]\.[2-9].*"` ; then
 	shopt -s direxpand
 fi
 
-# ========== Prompt ==========
+# ========== Prompt ========== #
 # Add git branch if its present to PS1
 parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
-# Color prompt
+# Pretty prompt
 if [ "$color_prompt" = yes ]; then
 	#Special color for root
 	if [ "$USER" = "root" ]; then
@@ -176,7 +176,7 @@ fi
 # ========== Launch TMUX =========
 if exists_command tmux; then
 	# Tmux exists and we are in a shell
-	if [[ $TERM == "screen" || $TERM == "cygwin" ]]; then
+	if [[ $TERM == "screen" || $TERM == "cygwin" || $TERM == "xterm" ]]; then
 		# Not already in a tmux session ? create a new
 		[[ -z "$TMUX" ]] && exec tmux
 	fi
