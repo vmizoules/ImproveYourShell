@@ -181,13 +181,13 @@ if exists_command tmux; then
 		[[ -z "$TMUX" ]] && exec tmux
 
 		# Enable mouse mode if possible
-		tmux set-option mouse-utf8 on
-		tmux set-option mouse-resize-pane on
-		tmux set-option mouse-select-pane on
-		tmux set-option mouse-select-window on
-		tmux set-window-option mode-mouse on
+		tmux set-option mouse-utf8 on > /dev/null
+		tmux set-option mouse-resize-pane on > /dev/null
+		tmux set-option mouse-select-pane on > /dev/null
+		tmux set-option mouse-select-window on > /dev/null
+		tmux set-window-option mode-mouse on > /dev/null
 		# Use CTRL+A instead of CTRL+B
-		tmux set-option prefix C-a
+		tmux set-option prefix C-a > /dev/null
 
 		# tmux display-message "Configuration loaded! Welcome $USER"
 	fi
