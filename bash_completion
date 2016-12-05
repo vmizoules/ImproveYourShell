@@ -2,8 +2,8 @@
 # Add '#', if you want to disable a line
 
 # GUARDIAN (avoid multiple inclusion)
-if [ -z "$VMZBASHCOMPLETION" ]; then
-export VMZBASHCOMPLETION="YES"
+if [ ! -z "$VMZBASHCOMPLETION" ]; then
+export VMZBASHCOMPLETION=yes
 # GUARDIAN (see the end at the bottom)
 
 
@@ -186,16 +186,21 @@ if exists_command tmux; then
 		# Not already in a tmux session ? create a new
 		[[ -z "$TMUX" ]] && exec tmux
 
-		# Enable mouse mode if possible
-		tmux set-option mouse-utf8 on > /dev/null
-		tmux set-option mouse-resize-pane on > /dev/null
-		tmux set-option mouse-select-pane on > /dev/null
-		tmux set-option mouse-select-window on > /dev/null
-		tmux set-window-option mode-mouse on > /dev/null
+		# Check tmux version
+		if test `tmux -V | grep "^tmux 1.*"` ; then
+			# < 2.0 -> enable mouse mode if possible
+			tmux set-option mouse-utf8 on > /dev/null
+			tmux set-option mouse-resize-pane on > /dev/null
+			tmux set-option mouse-select-pane on > /dev/null
+			tmux set-option mouse-select-window on > /dev/null
+			tmux set-window-option mode-mouse on > /dev/null
+		else
+			# > 2.0
+			tmux set mouse on > /dev/null
+		fi
+		
 		# Use CTRL+A instead of CTRL+B
 		tmux set-option prefix C-a > /dev/null
-
-		# tmux display-message "Configuration loaded! Welcome $USER"
 	fi
 fi
 
