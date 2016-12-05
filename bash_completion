@@ -1,6 +1,12 @@
 # Customize your shell by Vincent Mizoules
 # Add '#', if you want to disable a line
 
+# GUARDIAN (avoid multiple inclusion)
+if [ -z "$VMZBASHCOMPLETION" ]; then
+export VMZBASHCOMPLETION="YES"
+# GUARDIAN (see the end at the bottom)
+
+
 # ========== Variables ========== #
 color_prompt=yes
 
@@ -192,3 +198,7 @@ if exists_command tmux; then
 		# tmux display-message "Configuration loaded! Welcome $USER"
 	fi
 fi
+
+
+
+fi # END OF GUARDIAN
