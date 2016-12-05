@@ -140,16 +140,16 @@ function bak {
 }
 
 # ========== Shell options ========== #
-if test `echo $BASH_VERSION | grep "^[3-9].*"` ; then
+if [[ `echo $BASH_VERSION | grep "^[3-9].*"` ]]; then
 	# bash version > 3.0, enable some options
 	shopt -s cdspell
 fi
-if test `echo $BASH_VERSION | grep "^[4-9].*"` ; then
+if [[ `echo $BASH_VERSION | grep "^[4-9].*"` ]]; then
         # bash version > 4.0, enable some options
         shopt -s autocd
         shopt -s dirspell
 fi
-if test `echo $BASH_VERSION | grep "^[4-9]\.[2-9].*"` ; then
+if [[ `echo $BASH_VERSION | grep "^[4-9]\.[2-9].*"` ]]; then
 	# bash version > 4.2, enable some options
 	shopt -s direxpand
 fi
@@ -187,7 +187,7 @@ if exists_command tmux; then
 		[[ -z "$TMUX" ]] && exec tmux
 
 		# Check tmux version
-		if test `tmux -V | grep "^tmux 1.*"` ; then
+		if [[ `tmux -V | grep "^tmux 1.*"` ]] ; then
 			# < 2.0 -> enable mouse mode if possible
 			tmux set-option mouse-utf8 on > /dev/null
 			tmux set-option mouse-resize-pane on > /dev/null
