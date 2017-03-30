@@ -109,7 +109,7 @@ alias size10r='du -Sh | sort -hr | head -10'
 #docker
 alias dps='docker ps'
 alias d_container-clean='docker rm `docker ps -aq`'
-alias d_stop-all-forced='docker stop `docker ps -q`'
+alias d_stop-all='docker stop `docker ps -q`'
 alias d_stop-all-forced='docker stop -t 0 `docker ps -q`'
 
 #bashCompletion
