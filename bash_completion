@@ -107,7 +107,10 @@ alias size10='du -sk * | sort -rn | head -10'
 alias size10r='du -Sh | sort -hr | head -10'
 
 #docker
-alias docker-container-clean='docker rm `docker ps -aq`'
+alias dps='docker ps'
+alias d_container-clean='docker rm `docker ps -aq`'
+alias d_stop-all-forced='docker stop `docker ps -q`'
+alias d_stop-all-forced='docker stop -t 0 `docker ps -q`'
 
 #bashCompletion
 alias bashcompletionupdate='bash <(curl -Ls http://git.io/vT9wm)'
