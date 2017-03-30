@@ -2,8 +2,8 @@
 # Add '#', if you want to disable a line
 
 # GUARDIAN (avoid multiple inclusion)
-if test ! "$VMZBASHCOMPLETIONLOADED" = "yes"; then
-export VMZBASHCOMPLETIONLOADED="yes"
+#if test ! "$VMZBASHCOMPLETIONLOADED" = "yes"; then
+#export VMZBASHCOMPLETIONLOADED="yes"
 # GUARDIAN (see the end at the bottom)
 
 
@@ -209,4 +209,4 @@ fi
 
 
 
-fi # END OF GUARDIAN
+#fi # END OF GUARDIAN
