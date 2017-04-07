@@ -131,7 +131,7 @@ alias chgrp='chgrp --preserve-root'
 alias rm='rm -i --preserve-root'
 
 #others
-alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+alias whichWithAliases='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 alias cgrep='grep --color=auto'
 alias nano='nano -cS'
 alias webshare='python -m SimpleHTTPServer'
