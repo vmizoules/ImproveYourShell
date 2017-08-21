@@ -174,7 +174,7 @@ if [ "$color_prompt" = yes ]; then
 	fi
 
 	# special color for ssh
-	coloredHost="\h"
+	coloredHost="@\h"
 	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 		coloredHost="\033[33m@\h(ssh)"
 	fi
