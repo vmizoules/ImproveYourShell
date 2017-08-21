@@ -66,6 +66,10 @@ Root user :
 ![Screenshot Prompt3](/screenshot/prompt3.jpg?raw=true "Root prompt")
 
 
+SSH connection :
+
+
+![Screenshot Prompt4](/screenshot/prompt4.png?raw=true "Prompt on SSH")
 
 Additionnals tips
 ----
