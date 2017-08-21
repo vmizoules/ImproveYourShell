@@ -165,15 +165,34 @@ parse_git_branch() {
 }
 # Pretty prompt
 if [ "$color_prompt" = yes ]; then
-	#Special color for root
+
+	# use a special color for root
 	if [ "$USER" = "root" ]; then
 		coloredPrompt='\[\033[1;31m\]\$ \[\033[00m\]'
 	else
 		coloredPrompt='\$ \[\033[00m\]'
 	fi
 
-	PS1='\n[\t] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] : \[\033[01;34m\]\w\[\033[01;31m\] $(parse_git_branch)\[\033[00m\]\n'$coloredPrompt
+	# special color for ssh
+	coloredHost="\h"
+	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+		coloredHost="\033[33m@\h(ssh)"
+	fi
+
+	#0 Normal 1 Bold 2 Dim 4 underline
+	# DEFAULT="\033[00m"
+	# BLACK="\033[30m"
+	# RED="\033[31m"
+	# GREEN="\033[32m"
+	# ORANGE="\033[33m"
+	# BLUE="\033[34m"
+	# MAGENTA="\033[35m"
+	# CYAN="\033[36m"
+	# WHITE="\033[37m"
+	# [\t]=[19:52:38] \u@\h=user@host \w=pwd
+	PS1='\n[\t] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u'$coloredHost'\[\033[00m\] : \[\033[01;34m\]\w\[\033[01;31m\] $(parse_git_branch)\[\033[00m\]\n'$coloredPrompt
 else
+	# without colors
 	PS1='\n[\t] ${debian_chroot:+($debian_chroot)}\u@\h : \w $(parse_git_branch)\n\$ '
 fi
 
@@ -188,7 +207,7 @@ if exists_command tmux; then
 	# Tmux exists and we are in a shell
 	if [[ $TERM == "screen" || $TERM == "cygwin" || $TERM == "xterm" ]]; then
 		# Not already in a tmux session ? create a new
-		[[ -z "$TMUX" ]] && exec tmux
+		#[[ -z "$TMUX" ]] && exec tmux #disabled because having some issues
 
 		# Check tmux version
 		if [[ `tmux -V | grep "^tmux 1.*"` ]] ; then
