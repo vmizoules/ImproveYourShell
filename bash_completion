@@ -135,6 +135,7 @@ alias whichWithAliases='alias | /usr/bin/which --tty-only --read-alias --show-do
 alias cgrep='grep --color=auto'
 alias nano='nano -cS'
 alias webshare='python -m SimpleHTTPServer'
+alias webshare3='python -m http.server'
 alias json_prettyprint='python -m json.tool'
 
 #functions (too complex to be alias)
