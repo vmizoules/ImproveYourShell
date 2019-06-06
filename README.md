@@ -94,4 +94,4 @@ export mydir='/home/myName/myFavoriteDir/'
 Credits
 -------
 
-By vmizoules
+By vmizoules - https://github.com/vmizoules/ImproveYourShell
