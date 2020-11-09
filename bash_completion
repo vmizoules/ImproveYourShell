@@ -197,6 +197,8 @@ if [ "$color_prompt" = yes ]; then
 	# WHITE="\033[37m"
 	# [\t]=[19:52:38] \u@\h=user@host \w=pwd
 	PS1='\n[\t] ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u'$coloredHost'\[\033[00m\]$(kube_ps1) : \[\033[01;34m\]\w\[\033[01;31m\] $(parse_git_branch)\[\033[00m\]\n'$coloredPrompt
+	
+	# to fix PS1 for git-bash follow: https://github.com/mathiasbynens/dotfiles/issues/582#issuecomment-673015962
 else
 	# without colors
 	PS1='\n[\t] ${debian_chroot:+($debian_chroot)}\u@\h : \w $(parse_git_branch)\n\$ '
