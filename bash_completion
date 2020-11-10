@@ -112,6 +112,19 @@ alias d_container-clean='docker rm `docker ps -aq`'
 alias d_stop-all='docker stop `docker ps -q`'
 alias d_stop-all-forced='docker stop -t 0 `docker ps -q`'
 
+#kubernetes
+alias k="kubectl"
+alias kctx=kubectx
+alias kns=kubens
+#kubernetes advanced - full list https://github.com/ahmetb/kubectl-aliases/blob/master/.kubectl_aliases
+alias ka="kubectl apply --recursive -f"
+alias kd="kubectl delete --recursive -f"
+alias kg="kubectl get --recursive -f"
+alias kpw="kubectl get pods -w"
+alias kk='kubectl kustomize'
+alias kex='kubectl exec -i -t'
+alias klo='kubectl logs -f'
+
 #bashCompletion
 alias bashcompletionupdate='bash <(curl -Ls http://git.io/vT9wm)'
 alias updatebashcompletion='bashcompletionupdate'
