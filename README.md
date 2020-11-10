@@ -41,7 +41,7 @@ Features
 - Somes cool functions
   - gitAliasSetUp : to configure some shortcut in git (git st, git co, ...)
   - greeting : to welcome you
-- Easy to add you own customization (cf: ["Additionnals tips" part](##Additionnals-tips) )
+- Easy to add you own customization (cf: ["Additionnals tips" part](##additionnals-tips) )
 
 _To know all features, you can take a look at the "bash_completion" file._
 
