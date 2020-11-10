@@ -113,7 +113,8 @@ alias d_stop-all='docker stop `docker ps -q`'
 alias d_stop-all-forced='docker stop -t 0 `docker ps -q`'
 
 #kubernetes
-alias k="kubectl"
+alias k=kubectl
+complete -F __start_kubectl k # to expand completion to 'k'
 alias kctx=kubectx
 alias kns=kubens
 #kubernetes advanced - full list https://github.com/ahmetb/kubectl-aliases/blob/master/.kubectl_aliases
@@ -172,15 +173,29 @@ if [[ `echo $BASH_VERSION | grep "^[4-9]\.[2-9].*"` ]]; then
 	shopt -s direxpand
 fi
 
+# =========== Kubernetes config ============= #
+# if kubectl exist, load kube configuration files
+if exists_command kubectl; then
+	unset KUBECONFIG
+	for f in $(find ~/.kube -maxdepth 1 -type f -exec grep -q "kind: Config" {} \; -print 2>/dev/null); do
+		KUBECONFIG=${KUBECONFIG}:$f
+	done
+	export KUBECONFIG
+fi
+# enable Kubernetes prompt if kube-ps1 available on system
+if exists_command kube-ps1; then
+	# it will create kube_ps1, kubeon, kubeoff commands
+	source kube-ps1
+else
+    # avoid kube_ps1 error in PS1
+    kube_ps1(){ unused(){ :;} }
+fi
+
 # ========== Prompt ========== #
-# Add git branch if its present to PS1
+# add git branch if its present to PS1
 parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
-# Avoid kube_ps1 error if not installed
-if ! exists_command kube_ps1; then
-    kube_ps1(){ unused(){ :;} }
-fi
 
 # Pretty prompt
 if [ "$color_prompt" = yes ]; then
@@ -214,7 +229,7 @@ if [ "$color_prompt" = yes ]; then
 	# to fix PS1 for git-bash follow: https://github.com/mathiasbynens/dotfiles/issues/582#issuecomment-673015962
 else
 	# without colors
-	PS1='\n[\t] ${debian_chroot:+($debian_chroot)}\u@\h : \w $(parse_git_branch)\n\$ '
+	PS1='\n[\t] ${debian_chroot:+($debian_chroot)}\u@\h $(kube_ps1): \w $(parse_git_branch)\n\$ '
 fi
 
 # ========== Read file for your personnal modification ==========
