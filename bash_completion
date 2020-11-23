@@ -214,8 +214,13 @@ if [ "$color_prompt" = yes ]; then
 		coloredPrompt='\$ \[\033[00m\]'
 	fi
 
-	# special color for ssh
+	# default host color
 	coloredHost="@\h"
+	# special for wsl
+	if [[ $(grep Microsoft /proc/version) ]]; then
+		coloredHost="\033[90m@WSL"
+	fi
+	# special color for ssh
 	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 		coloredHost="\033[33m@\h(ssh)"
 	fi
