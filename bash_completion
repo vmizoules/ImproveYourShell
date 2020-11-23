@@ -59,6 +59,19 @@ function loop {
 	done
 }
 
+function bak {
+	echo "Saved '$1' in '$1.bak'"
+	cp -R "$1" "$1.bak" ;
+}
+
+# arguments will add search domains (max: 6)
+function wsl_dns_fixer {
+	echo "DNS setted up to:"
+	/mnt/c/Windows/system32/ipconfig.exe /all | grep -E --color=auto "(DNS Servers|Serveurs DNS)" | cut -d ":" -f 2 | grep --color=auto -e '^ [0-9]' | tr -d '\r' | sort | uniq | sed 's/^/nameserver/' | sudo tee /etc/resolv.conf
+	echo "search $*" | sudo tee -a /etc/resolv.conf
+	echo ""
+}
+
 # ========== Aliases ========== #
 #ls
 alias ls='ls --color=never'
@@ -151,12 +164,6 @@ alias nano='nano -cS'
 alias webshare='python -m SimpleHTTPServer'
 alias webshare3='python -m http.server'
 alias json_prettyprint='python -m json.tool'
-
-#functions (too complex to be alias)
-function bak {
-	echo "Saved '$1' in '$1.bak'"
-	cp -R "$1" "$1.bak" ;
-}
 
 # ========== Shell options ========== #
 if [[ `echo $BASH_VERSION | grep "^[3-9].*"` ]]; then
