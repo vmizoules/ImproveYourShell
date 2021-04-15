@@ -95,3 +95,8 @@ Credits
 -------
 
 By vmizoules - https://github.com/vmizoules/ImproveYourShell
+
+Stargazers over time
+--------------------
+
+[![Stargazers over time](https://starchart.cc/vmizoules/ImproveYourShell.svg)](https://starchart.cc/vmizoules/ImproveYourShell)
