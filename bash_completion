@@ -165,6 +165,9 @@ alias webshare='python -m SimpleHTTPServer'
 alias webshare3='python -m http.server'
 alias json_prettyprint='python -m json.tool'
 
+# inspect docker image layers
+alias dive='docker run --rm -ti -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:v0.12.0@sha256:b4bbb985609f32ddfeb8a31f2cb254998fce2b95c358ad588a91a1ed138d6033'
+
 # ========== Shell options ========== #
 if [[ `echo $BASH_VERSION | grep "^[3-9].*"` ]]; then
 	# bash version > 3.0, enable some options
